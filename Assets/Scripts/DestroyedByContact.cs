@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class DestroyedByContact : MonoBehaviour
 {
-    public GameObject playerExplosion;
     public GameObject explosion;
+    public GameObject playerExplosion;
 
-    void OnTriggerEnter(Collider other)
-    {
+    void OnTriggerEnter(Collider other) {
         if (other.tag == "Boundary")
         {
             return;
         }
-        Instantiate(playerExplosion, transform.position, transform.rotation); // as GameObject;
-        if (other.tag == "player")
-        {
-            Instantiate(playerExplosion, other.transform.position, other.transform.rotation); // as GameObject;
+        Instantiate(explosion, transform.position, transform.rotation); 
+        if (other.tag == "Player"){
+            Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
         }
         Destroy(other.gameObject);
         Destroy(gameObject);
     }
-
-
-
 }

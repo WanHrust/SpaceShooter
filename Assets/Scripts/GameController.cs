@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
     public GameObject hazard;
-    public Vector3 spawnValue;
+    public Vector3 spawnValues;
 
     void Start()
     {
@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour {
     }
     void SpawnWaves()
     {
-        Quaternion spawnRotation = new Quaternion.identity (Random.Range (-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
-        Vector3 spawnPosition = new Vector3 ();
+        Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+        Quaternion spawnRotation = Quaternion.identity;
         Instantiate(hazard, spawnPosition, spawnRotation);
     }
 }
