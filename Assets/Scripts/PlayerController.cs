@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-       
+
     }
 
     public GameObject shot;
@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
     public float nextFire;
     void Update()
     {
-    if (Input.GetButton("Fire1") && Time.time > nextFire)
-    {
-        nextFire = Time.time + fireRate;
-        Instantiate(shot, shotSpawn.position, shotSpawn.rotation); // as GameObject;
-    }
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            GameObject shotClone = GameObject.Instantiate(shot, shotSpawn.position, shotSpawn.rotation); // as GameObject;
+        }
     }
 
     void FixedUpdate()
