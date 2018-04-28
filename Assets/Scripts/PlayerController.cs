@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 [System.Serializable]
@@ -13,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public Boundary boundary;
     public float speed;
     Rigidbody rigidBody;
+    AudioSource audio;
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-
+        audio = GetComponent<AudioSource>();
     }
 
     public GameObject shot;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             GameObject shotClone = GameObject.Instantiate(shot, shotSpawn.position, shotSpawn.rotation); // as GameObject;
+            audio.Play(); // AudioSource
         }
     }
 
